@@ -187,7 +187,7 @@ Example :
 </html>
 ```
 
-## Authors
+## Author
 
 * **Tony Piton** - *Initial work* - [TonyPtn](https://github.com/TonyPtn)
 
