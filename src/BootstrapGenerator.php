@@ -8,19 +8,17 @@
 class BootstrapGenerator
 {
     //Set bootstrap sources
-    public static function setSources($dir)
+    public static function setSources($dir, $cssFile, $jQueryFile, $jsFile)
     {
         //Set css files
-        $cssBootstrap = $dir."/css/bootstrap.css";
-        $cssBootstrapTheme = $dir."/css/bootstrap-theme.css";
+        $cssBootstrap = $dir.$cssFile;
 
         //Set js files
-        $jsBootstrap = $dir."/js/bootstrap.js";
-        $jsJQuery = $dir."/js/jquery-3.3.1.js";
+        $jsBootstrap = $dir.$jsFile;
+        $jsJQuery = $dir.$jQueryFile;
 
         //Set HTML
         $sources = "<link rel='stylesheet' href='".$cssBootstrap."'>
-                    <link rel='stylesheet' href='".$cssBootstrapTheme."'>
                     <script src='".$jsJQuery."'></script>
                     <script src='".$jsBootstrap."'></script>";
 
@@ -93,7 +91,7 @@ class BootstrapGenerator
                 $navbarElement = "<div class='form-group ".$class."' id='".$id."' $attributes>".$content."</div>";
                 break;
             case 'button':
-                $navbarElement = "<button class='btn navbar-btn ".$class."' id='".$id."' $attributes>".$content."</button>";
+                $navbarElement = "<button class='navbar-btn btn ".$class."' id='".$id."' $attributes>".$content."</button>";
                 break;
             case 'text':
                 $navbarElement = "<p class='navbar-text ".$class."' id='".$id."' $attributes>".$content."</p>";
