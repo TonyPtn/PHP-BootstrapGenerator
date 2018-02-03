@@ -5,6 +5,7 @@
  * Description : Bootstrap HTML elements generator
  */
 
+
 class BootstrapGenerator
 {
     //Set bootstrap sources
@@ -52,6 +53,16 @@ class BootstrapGenerator
 
         //Return HTML Container
         return $container;
+    }
+
+    //Generate Col div
+    public static function genColDiv($content, $size, $class, $id, $attributes)
+    {
+        //Set HTML Col Div element
+        $colDiv = "<div class='col-".$size." ".$class."' id='".$id."' ".$attributes.">".$content."</div>";
+
+        //Return HTML Col Div
+        return $colDiv;
     }
 
 
@@ -111,5 +122,69 @@ class BootstrapGenerator
 
         //Return HTML row div
         return $row;
+    }
+
+
+    //Generate Table
+    public static function genTable($content, $type, $head, $center, $class, $id, $attributes)
+    {
+        //Prepare header variable
+        $header = null;
+
+        if(!is_null($head))
+        {
+            //Fill table header
+            foreach ($head as $headElement)
+            {
+                //Add head element
+                $header .= "<th";
+                $center ? $header.= " class='text-center'": $header = $header;
+                $header.=">".$headElement."</th>";
+            }
+        }
+
+        //Prepare content variable
+        $cont = null;
+
+        //Fill content
+        foreach ($content as $row)
+        {
+            //Get rox style
+            $style = $row[0];
+
+            //Unset row style in the row tab
+            unset($row[0]);
+
+            //Add row
+            $cont .= "<tr class='".$style."'>";
+
+            foreach ($row as $rowElement)
+            {
+                //add row element
+                $cont .= "<td";
+                $center ? $cont.= " class='text-center'": $cont = $cont;
+                $cont .= ">".$rowElement."</td>";
+            }
+
+            //Close row
+            $cont .= "</tr>";
+
+        }
+
+        //Set HTML Table
+        $table = "<table class='table ".$type." ".$class."' id='".$id."' ".$attributes."><thead>".$header."</thead>".$cont."</table>";
+
+        //Return HTML Table
+        return $table;
+    }
+
+    //Generate Glyphicon
+    public static function genGlyphIcon($type, $class, $id, $attributes)
+    {
+        //Set HTML GlyphIcon element
+        $glyphicon = "<span class='glyphicon glyphicon-".$type." ".$class."' id='".$id."' ".$attributes."></span>";
+
+        //Return HTML GlyphIcon
+        return $glyphicon;
     }
 }

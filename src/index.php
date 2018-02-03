@@ -15,33 +15,22 @@
 <body>
 
 <?php
+    $Thead = array(1, 2, 3);
 
-    //Creates a navbar button
-    $button = BootstrapGenerator::genNavbarElement("Submit", "button", "btn-primary", null, null);
+    $Tcontent = array(array("danger", BootstrapGenerator::genGlyphIcon("home", null, null, null), "B", "C"), array("success", "D", "E", "F"));
 
-    //Creates a custom navbar brand
-    $brand = BootstrapGenerator::genNavbarElement("My Brand", "brand", null, null, null);
+    $table =  BootstrapGenerator::genTable($Tcontent, "table-bordered table-hover", $Thead, true, null, null, null);
 
-    //Concatenate the elements in order to make one
-    $formContent = $brand.$button;
+    $col1Div = BootstrapGenerator::genColDiv(null, 1, null, null, null);
 
-    //Generates the form group
-    $formGroup = BootstrapGenerator::genNavbarElement($formContent, "form-group", null, null, null);
+    $colDiv = BootstrapGenerator::genColDiv($table, 10, null, null, null);
 
-    //Generates the nav form
-    $form = BootstrapGenerator::genNavbarElement($formGroup, "form", null, null, "method='post'");
+    $rowContent = $col1Div.$colDiv.$col1Div;
 
-    //Generates the nav bar
-    $nav = BootstrapGenerator::genNavbar($form, true, null, null, null);
+    $rowDiv = BootstrapGenerator::genRow($rowContent, null, null, null);
 
-    //Generates the jumbotron
-    $jumbotron =  BootstrapGenerator::genJumbotron($nav."<br><h1>Hello, world!</h1>",
-                    null, null, null);
+    $container = BootstrapGenerator::genContainer($rowDiv, false, null, null, null);
 
-    //Generates the container
-    $container =  BootstrapGenerator::genContainer($jumbotron, true, null, null, null);
-
-    //Displays the whole thing !
     echo $container;
 ?>
 
