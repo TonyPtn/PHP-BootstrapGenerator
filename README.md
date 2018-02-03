@@ -8,6 +8,9 @@ You can generate :
 * Navbar
 * Navbar elements
 * Row divs
+* Glyphicons
+* Col divs
+* Tables
 
 You can add content, classes, an id and any other attributes to those php generated elements.
 
@@ -127,6 +130,55 @@ This method needs 5 attributes :
 Example :
 ```php
 echo BootstrapGenerator::genNavbarElement("Submit", "button", "btn-primary", null, null);
+```
+
+#### Generate GlyphIcons 
+
+Use the method **genGlyphIcon()** in order to generate a GlyphIcon element.
+This method needs 4 attributes :
+* $type : sring that indicates the type of the GlyphIcon element ("home", "star" ...)
+* $class : class(es) to add to the GlyphIcon element
+* $id : id of the GlyphIcon element
+* $attributes : other attriubutes to add to the GlyphIcon element
+
+Example :
+```php
+echo BootstrapGenerator::genGlyphIcon("home", null, null, null);
+```
+
+#### Generate Col divs 
+
+Use the method **genColDiv()** in order to generate a Col div element.
+This method needs 5 attributes :
+* $content : content displayed in the Col div element
+* $size : int that indicates the size of the Col div element (1 to 12)
+* $class : class(es) to add to the Col div element
+* $id : id of the Col div element
+* $attributes : other attriubutes to add to the Col div element
+
+Example :
+```php
+echo BootstrapGenerator::genColDiv("<h1>Hello world</h1>", 10, null, null, null);
+```
+
+#### Generate Table 
+
+Use the method **genTable()** in order to generate a Table element.
+This method needs 7 attributes :
+* $content : array that indicates the content displayed in the Table element
+  * Each array represents a row. The first element should be the style of the row (success, danger, info or even null)
+* $type : string that indicates the type of the Table element (table-bordered, table-hover ...)
+* $head : strings array with table head elements
+* $center : boolean that indicates if the cells' content are centered
+* $class : class(es) to add to the Table element
+* $id : id of the Table element
+* $attributes : other attriubutes to add to the Table element
+
+Example :
+```php
+$Thead = array(1, 2, 3);
+$Tcontent = array(array("danger", "A", "B", "C"), array("success", "D", "E", "F"));
+echo BootstrapGenerator::genTable($Tcontent, "table-hover", $Thead, true, null, null, null);
 ```
 
 
